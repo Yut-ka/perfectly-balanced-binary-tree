@@ -26,35 +26,35 @@ void AddNodes(Tree_Item*& pCurrent, int N) {
 	}
 }
 
-void Preorder_traversal(int t, std::string& str, Tree_Item* pCurrent) {
+void Preorder_traversal(std::string& str, Tree_Item* pCurrent, int t = 0) {
 	if (pCurrent != NULL) {
 		std::string line = "";
 		for (int i = 0; i < t; i++) line += "\t";
 		line = line + std::to_string(pCurrent->inf);
 		str = str + line + "\n";
-		Preorder_traversal(t + 1, str, pCurrent->left);
-		Preorder_traversal(t + 1, str, pCurrent->right);
+		Preorder_traversal(str, pCurrent->left, t + 1);
+		Preorder_traversal(str, pCurrent->right, t + 1);
 	}
 }
 
-void Inorder_traversal(int t, std::string& str, Tree_Item* pCurrent) {
+void Inorder_traversal(std::string& str, Tree_Item* pCurrent, int t = 0) {
 	if (pCurrent != NULL) {
-		Inorder_traversal(t + 1, str, pCurrent->left);
+		Inorder_traversal(str, pCurrent->left, t + 1);
 		std::string line = "";
 		for (int i = 0; i < t; i++) line += "\t";
 		line = line + std::to_string(pCurrent->inf);
 		str = str + line + "\n";
-		Inorder_traversal(t + 1, str, pCurrent->right);
+		Inorder_traversal( str, pCurrent->right, t + 1);
 	}
 }
 
-void Preorder_Inorder_traversal(int t, std::string& str, Tree_Item* pCurrent) {
+void Preorder_Inorder_traversal(std::string& str, Tree_Item* pCurrent, int t = 0) {
 	if (pCurrent != NULL) {
-		Preorder_Inorder_traversal(t + 1, str, pCurrent->right);
+		Preorder_Inorder_traversal(str, pCurrent->right, t + 1);
 		std::string line = "";
 		for (int i = 0; i < t; i++) line += "\t";
 		line = line + std::to_string(pCurrent->inf);
 		str = str + line + "\n";
-		Preorder_Inorder_traversal(t + 1, str, pCurrent->left);
+		Preorder_Inorder_traversal(str, pCurrent->left, t + 1);
 	}
 }
